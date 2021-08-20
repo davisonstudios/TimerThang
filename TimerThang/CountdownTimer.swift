@@ -1,5 +1,5 @@
 //
-//  FancyTimer.swift
+//  CountdownTimer.swift
 //  TimerThang
 //
 //  Created by Stuart Davison on 8/16/21.
@@ -25,6 +25,10 @@ struct TimeRemaining {
 		secondsRemaining = startingSeconds
 	}
 	
+	mutating func reset() {
+		secondsRemaining = startingSeconds
+	}
+	
 	mutating func add(minutes: Int = 0, seconds: Int = 0) {
 		let newValue = secondsRemaining + (minutes * 60 + seconds)
 		guard newValue >= 0 else {return}
@@ -32,16 +36,16 @@ struct TimeRemaining {
 	}
 }
 
+enum TimerState {
+	case reset
+	case running
+	case paused
+	case complete
+}
+
 class CountdownTimer: ObservableObject {
-	@Published var timeRemaining = TimeRemaining(minutes: 0, seconds: 0) {
-		didSet {
-			if timeRemaining.secondsRemaining == 0 {
-				stop()
-			}
-		}
-	}
-	
-	var isRunning: Bool { timer?.isValid ?? false }
+	@Published var timeRemaining = TimeRemaining(minutes: 0, seconds: 0)
+	@Published var state: TimerState = .reset
 	
 	private var timer: Timer?
 	
@@ -56,15 +60,31 @@ class CountdownTimer: ObservableObject {
 		}
 	}
 	
-	func start() {
-		guard timer == nil else {return}
-		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-			self.timeRemaining.add(seconds: -1)
+	func checkStatus() {
+		if timeRemaining.secondsRemaining == 0 {
+			stop()
 		}
 	}
 	
-	func stop() {
+	func start() {
+		guard timer == nil else {return}
+		if state == .complete {
+			timeRemaining.reset()
+		}
+		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+			self.timeRemaining.add(seconds: -1)
+			self.checkStatus()
+		}
+		state = .running
+	}
+	
+	func pause() {
+		stop(paused: true)
+	}
+	
+	func stop(paused: Bool = false) {
 		timer?.invalidate()
 		timer = nil
+		state = paused ? .paused : .complete
 	}
 }

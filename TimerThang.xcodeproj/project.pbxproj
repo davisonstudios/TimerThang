@@ -11,6 +11,7 @@
 		5CDCF8AC26CAD40C00987604 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCF8AB26CAD40C00987604 /* ContentView.swift */; };
 		5CDCF8AE26CAD41000987604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDCF8AD26CAD41000987604 /* Assets.xcassets */; };
 		5CDCF8B126CAD41000987604 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDCF8B026CAD41000987604 /* Preview Assets.xcassets */; };
+		5CDCF8B926CAE60400987604 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCF8B826CAE60400987604 /* CountdownTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		5CDCF8AD26CAD41000987604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CDCF8B026CAD41000987604 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CDCF8B226CAD41000987604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CDCF8B826CAE60400987604 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				5CDCF8A926CAD40C00987604 /* TimerThangApp.swift */,
 				5CDCF8AB26CAD40C00987604 /* ContentView.swift */,
+				5CDCF8B826CAE60400987604 /* CountdownTimer.swift */,
 				5CDCF8AD26CAD41000987604 /* Assets.xcassets */,
 				5CDCF8B226CAD41000987604 /* Info.plist */,
 				5CDCF8AF26CAD41000987604 /* Preview Content */,
@@ -140,6 +143,7 @@
 			files = (
 				5CDCF8AC26CAD40C00987604 /* ContentView.swift in Sources */,
 				5CDCF8AA26CAD40C00987604 /* TimerThangApp.swift in Sources */,
+				5CDCF8B926CAE60400987604 /* CountdownTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
